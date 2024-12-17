@@ -268,6 +268,44 @@ const draft: DraftArticle = {
 };
 ```
 
+### PathKeys<T>
+Gets all possible dot-notation paths in an object type. Useful for type-safe access to nested object properties.
+
+```typescript
+interface User {
+  name: string;
+  profile: {
+    age: number;
+    address: {
+      street: string;
+      city: string;
+      country: {
+        code: string;
+        name: string;
+      }
+    }
+  }
+}
+
+type Paths = PathKeys<User>;
+/* Result:
+  | 'name'
+  | 'profile'
+  | 'profile.age'
+  | 'profile.address'
+  | 'profile.address.street'
+  | 'profile.address.city'
+  | 'profile.address.country'
+  | 'profile.address.country.code'
+  | 'profile.address.country.name'
+*/
+
+// Can be used for type-safe object access utilities
+function get<T, P extends PathKeys<T>>(obj: T, path: P): any {
+  return path.split('.').reduce((acc, part) => acc[part], obj);
+}
+```
+
 ### PromiseType<T>
 Extracts the type that a Promise resolves to.
 
@@ -328,6 +366,29 @@ type FullUser = UnionToIntersection<UserUnion>;
 //   version: number;
 //   isActive: boolean;
 // }
+```
+
+### AsyncReturnType<T>
+Extracts the return type of an async function, removing the Promise wrapper.
+
+```typescript
+async function fetchUser() {
+  return {
+    id: 1,
+    name: 'John',
+    roles: ['admin']
+  };
+}
+
+type User = AsyncReturnType<typeof fetchUser>; 
+// Result: { id: number; name: string; roles: string[]; }
+
+async function getData(): Promise<string | number> {
+  return 42;
+}
+
+type Data = AsyncReturnType<typeof getData>;
+// Result: string | number
 ```
 
 ## Contributing

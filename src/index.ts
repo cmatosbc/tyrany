@@ -11,3 +11,5 @@ export { NonNullable } from './types/NonNullable';
 export { ExtractArrayType } from './types/ExtractArrayType';
 export { DeepPartial } from './types/DeepPartial';
 export { RequireAtLeastOne } from './types/RequireAtLeastOne';
+export { AsyncReturnType } from './types/AsyncReturnType';
+export { PathKeys } from './types/PathKeys';
