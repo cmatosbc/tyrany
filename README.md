@@ -306,6 +306,45 @@ function get<T, P extends PathKeys<T>>(obj: T, path: P): any {
 }
 ```
 
+### PickByType<T, V>
+Constructs a new type by picking properties from type `T` whose values are assignable to type `V`.
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  isAdmin: boolean;
+  meta: {
+    lastLogin: Date;
+  };
+}
+
+type StringProperties = PickByType<User, string>;
+// Result: { name: string }
+
+type NumberProperties = PickByType<User, number>;
+// Result: { id: number }
+```
+
+### PickByValue<T, V>
+Similar to PickByType but with more precise type matching, picks properties from type `T` whose values exactly match type `V`.
+
+```typescript
+interface Config {
+  port: number;
+  host: string;
+  debug: boolean;
+  timeout: number;
+  version: string;
+}
+
+type StringSettings = PickByValue<Config, string>;
+// Result: { host: string; version: string }
+
+type NumberSettings = PickByValue<Config, number>;
+// Result: { port: number; timeout: number }
+```
+
 ### PromiseType<T>
 Extracts the type that a Promise resolves to.
 
@@ -344,6 +383,44 @@ const byEmailAndPhone: SearchQuery = { email: "john@example.com", phone: "123456
 
 // TypeScript Error: At least one property must be present
 const empty: SearchQuery = {}; // Error
+```
+
+### Try<T, E>
+Represents a value that can either be a successful result of type `T` or an error of type `E`. Useful for type-safe error handling.
+
+```typescript
+async function fetchData(): Promise<Try<User, Error>> {
+  try {
+    const user = await db.getUser(1);
+    return { success: true, value: user };
+  } catch (error) {
+    return { success: false, error: error as Error };
+  }
+}
+
+const result = await fetchData();
+if (result.success) {
+  console.log(result.value.name); // Type-safe access to user properties
+} else {
+  console.error(result.error.message); // Type-safe access to error properties
+}
+```
+
+### UnionToArray<T>
+Converts a union type into an array type, useful for working with union types in a more familiar array format.
+
+```typescript
+type Status = 'pending' | 'active' | 'completed';
+type StatusArray = UnionToArray<Status>;
+// Result: ('pending')[] | ('active')[] | ('completed')[]
+
+type Numbers = 1 | 2 | 3;
+type NumberArray = UnionToArray<Numbers>;
+// Result: (1)[] | (2)[] | (3)[]
+
+// Useful for type-safe array operations
+const statuses: StatusArray = ['active'];
+const numbers: NumberArray = [1, 1, 1];
 ```
 
 ### UnionToIntersection<T>
