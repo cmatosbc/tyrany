@@ -42,10 +42,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/tyrany"
+    "url": "https://github.com/cmatosbc/tyrany"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/tyrany/issues"
+    "url": "https://github.com/cmatosbc/tyrany/issues"
   },
-  "homepage": "https://github.com/yourusername/tyrany#readme"
+  "homepage": "https://github.com/cmatosbc/tyrany#readme"
 }
