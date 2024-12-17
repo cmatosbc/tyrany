@@ -1,0 +1,46 @@
+# Source files
+src/**/*.test.ts
+src/**/__tests__/**
+src/**/*.spec.ts
+
+# Development configs
+.github/
+.vscode/
+.editorconfig
+.eslintrc*
+.prettierrc*
+.gitignore
+.travis.yml
+tsconfig.json
+jest.config.js
+.husky/
+
+# Development folders
+coverage/
+docs/
+examples/
+test/
+tests/
+__tests__/
+node_modules/
+
+# Build process
+*.tsbuildinfo
+*.log
+.env*
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+.idea/
+*.sublime-*
+*.code-workspace
+
+# Misc
+.git/
+.gitattributes
+CONTRIBUTING.md
+CHANGELOG.md
+TODO.md
+*.tgz
