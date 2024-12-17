@@ -13,3 +13,7 @@ export { DeepPartial } from './types/DeepPartial';
 export { RequireAtLeastOne } from './types/RequireAtLeastOne';
 export { AsyncReturnType } from './types/AsyncReturnType';
 export { PathKeys } from './types/PathKeys';
+export { Try } from './types/Try';
+export { UnionToArray } from './types/UnionToArray';
+export {PickByType} from './types/PickByType';
+export { PickByValueType } from './types/PickByValueType';
