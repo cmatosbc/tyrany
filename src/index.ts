@@ -15,5 +15,5 @@ export { AsyncReturnType } from './types/AsyncReturnType';
 export { PathKeys } from './types/PathKeys';
 export { Try } from './types/Try';
 export { UnionToArray } from './types/UnionToArray';
-export {PickByType} from './types/PickByType';
-export { PickByValueType } from './types/PickByValueType';
+export { PickByType } from './types/PickByType';
+export { PickByValue } from './types/PickByValueType';
