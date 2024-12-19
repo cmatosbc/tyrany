@@ -33,5 +33,5 @@ jobs:
           ${{ runner.os }}-pnpm-${{ matrix.node-version }}-
           ${{ runner.os }}-pnpm-
     - run: pnpm install
-    - run: pnpm run build --if-present
+    - run: pnpm run build
     - run: pnpm test
