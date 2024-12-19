@@ -1,5 +1,7 @@
 # Tyrany
 
+[![Node.js CI](https://github.com/cmatosbc/tyrany/actions/workflows/node.js.yml/badge.svg)](https://github.com/cmatosbc/tyrany/actions/workflows/node.js.yml)
+
 A comprehensive collection of TypeScript utility types designed to enhance your type-safe development experience. A despotic control over your code behavior, crushing any resistance or mischief from regular JS implementations.
 
 ## Installation
