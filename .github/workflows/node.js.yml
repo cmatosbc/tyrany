@@ -1,4 +1,4 @@
-name: PNPM Build/Test
+name: Node.js CI
 
 on:
   push:
@@ -22,9 +22,16 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
     - name: Install pnpm
       run: npm install -g pnpm
+    - name: Cache pnpm dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-${{ matrix.node-version }}-
+          ${{ runner.os }}-pnpm-
     - run: pnpm install
     - run: pnpm run build --if-present
     - run: pnpm test
