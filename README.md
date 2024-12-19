@@ -526,6 +526,24 @@ user.settings.theme = 'light';   // Error
 user.tags.push('guest');         // Error
 ```
 
+### Diff<T, U>
+Computes the difference between two types `T` and `U`, excluding properties of type `U` from type `T`.
+
+```typescript
+// Given types
+interface A {
+  x: number;
+  y: string;
+}
+
+interface B {
+  y: string;
+}
+
+// Resulting type will be { x: number; }
+type Result = Diff<A, B>;
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

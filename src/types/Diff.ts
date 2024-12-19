@@ -17,6 +17,6 @@
  * type Result = Diff<A, B>;
  */
 
-type Diff<T, U> = T extends U
+export type Diff<T, U> = T extends U
   ? never
   : T;
