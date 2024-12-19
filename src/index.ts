@@ -17,3 +17,5 @@ export { Try } from './types/Try';
 export { UnionToArray } from './types/UnionToArray';
 export { PickByType } from './types/PickByType';
 export { PickByValue } from './types/PickByValueType';
+export { IntersectKeys } from './types/IntersectKeys';
+export { DeepFreeze } from './types/DeepFreeze';

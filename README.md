@@ -468,6 +468,64 @@ type Data = AsyncReturnType<typeof getData>;
 // Result: string | number
 ```
 
+### IntersectKeys<T, U>
+Extracts the common keys between two types.
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Employee {
+  id: string;
+  name: number;
+  department: string;
+}
+
+// Get common keys between User and Employee
+type CommonKeys = IntersectKeys<User, Employee>;
+// Result: 'id' | 'name'
+```
+
+### DeepFreeze<T>
+Makes all properties in a type deeply readonly, including nested objects and arrays. This is similar to DeepReadonly but specifically designed for creating immutable data structures.
+
+```typescript
+interface User {
+  name: string;
+  settings: {
+    theme: string;
+    notifications: {
+      email: boolean;
+      push: boolean;
+    };
+  };
+  tags: string[];
+}
+
+// Create an immutable user type
+type FrozenUser = DeepFreeze<User>;
+
+const user: FrozenUser = {
+  name: 'John',
+  settings: {
+    theme: 'dark',
+    notifications: {
+      email: true,
+      push: false,
+    },
+  },
+  tags: ['admin', 'user'],
+};
+
+// These will cause TypeScript errors:
+user.name = 'Jane';              // Error
+user.settings.theme = 'light';   // Error
+user.tags.push('guest');         // Error
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
